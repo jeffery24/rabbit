@@ -1,0 +1,29 @@
+server:
+  port: 8001
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: rabbit-producer
+  http:
+    encoding:
+      charset: UTF-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: NON_NULL
+    time-zone: GMT+8
+  rabbitmq:
+    addresses: rb.yiqimai51.com
+#    addresses: rb.yiqimai51.com:5672,192.168.11.72:5672,192.168.11.71:5673
+    connection-timeout: 15000
+    username: mq
+    password: 123456
+    ##	使用启用消息确认模式
+    publisher-confirms: true
+    virtual-host: /
+    ## 	设置return消息模式，注意要和mandatory一起去配合使用
+    port: 5672
+#    publisher-returns: true
+#    template:
+#      mandatory: true

@@ -1,0 +1,29 @@
+server:
+  port: 8002
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: rabbitmq-consumer
+  http:
+    encoding:
+      charset: UTF-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: NON_NULL
+    time-zone: GMT+8
+  rabbitmq:
+    addresses: rb.yiqimai51.com:5672
+#    addresses: rb.yiqimai51.com:5672,192.168.11.72:5672,192.168.11.71:5673
+    connection-timeout: 15000
+    username: mq
+    password: 123456
+    virtual-host: /
+    ## 	表示消费者消费成功消息以后需要手工的进行签收(ack)，默认为auto
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 5
+        max-concurrency: 10
+        prefetch: 1
